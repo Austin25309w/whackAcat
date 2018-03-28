@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="">
+		<title> whack a cat </title>
+    	<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' ></script>
+		<script type="text/javascript">	
+			$(document).ready(function(){
+				$(".cat").hide();		//  All cat images are hidden.
+				$(".cat5").show();		//  The game starts off with the central cat shown.
+
+				var audio = {};
+				for(i=1; i<= 4; i++) {				//  Load up a sound library with all the sounds.
+					name = "meow" + i;
+					audio[name] = new Audio();
+					audio[name].src = "./sounds/" + name + ".m4a";
+				}
+
+				window.setInterval(catDodge, 1500);		//  Make the cat pop up every 1.5 seconds.
+				
+				function catDodge() {					//  A function that makes any visible cats slideUp into the ceiling, then drops him down from another hole at regular intervals.
+					$(".cat").slideUp();					//  all visible cats slideUp.
+					setTimeout(emptyFunc, 2000)
+					newIndex = Math.floor(Math.random()*9)+1;	//  Generate a random index from 1-9.
+					newCat = ".cat" + newIndex;					//  Creates a random string, ".catX", where X is a random number from 1 to 9.  This string is the class for one of the nine cat images. 
+					setTimeout(newCatDrop, 2000);				//  Wait 2 seconds, then run "newcatDrop" function which causes the new random cat to slideDown.
+					function newCatDrop() {
+						$(newCat).slideDown();		// New cat appears
+					}
+					function emptyFunc() {
+
+					}
+				}
+
+				$(".cat").click(function(){				//  A listener that runs when a visible cat is clicked.  Causes cat to slideUp, increments score, and then causes a random cat to slideDown.
+					prevScore = $("#score").text();			//  Retrieves the previous score.
+					$("#score").text(Number(prevScore)+1);	//  .text() sets the new score.
+					scoreMessage(Number(prevScore)+1);
+
+					newIndex = Math.floor(Math.random()*9)+1;	//  Generate a random index from 1-9.
+					newCat = ".cat" + newIndex;					//  Creates a random string, ".catX", where X is a random number from 1 to 9.  This string is the class for one of the nine cat images.
+					$(this).slideUp();							//  Cat that has been clicked disappears
+					setTimeout(newCatDrop, 2000);				//  New cat will slideDown after 2 seconds, enough time for the animation to process.s
+
+					newSoundNum = Math.floor(Math.random()*4)+1;	//  Randomly generate index from 1-4.
+					newSoundName = "meow" + newSoundNum;			//  Create a random string, "meowX", where X is a random number from 1 to 4.  This is a key to retrieve a sound from the audio library.
+					audio[newSoundName].play();						//  Play the sound.
+
+					function newCatDrop() {
+						$(newCat).slideDown();		// New cat appears
+					}
+
+				})
+
+				function scoreMessage(score) {
+					if(score == 5) {
+						$("#scoreMessage").text("Meowsers!");
+					}
+					else if(score == 10) {
+						$("#scoreMessage").text("Cat-a-tonic!");
+					}
+					else if(score == 15) {
+						$("#scoreMessage").text("Fur-rocious!");
+					}
+					else if(score == 20) {
+						$("#scoreMessage").text("CAT-ASTROPHE!");
+					}
+					else if(score == 25) {
+						$("#scoreMessage").text("Uh, cool score, bro...");
+					}
+					else if(score == 30) {
+						$("#scoreMessage").css("color", "blue")
+						$("#scoreMessage").text("...You should probably get back to coding.");
+					}
+					else if(score == 35) {
+						$("#scoreMessage").text("I'm sure the local UPS has some leftover bubble wrap to satisfy your obvious OCD.");
+					}
+					else if(score == 40) {
+						$("#scoreMessage").text("Please Stop.");
+					}
+					else if(score == 45) {
+						$("#scoreMessage").text("There are no more messages after this one.  You can stop now.");
+					}
+				}
+			});
+
+		</script>
+	</head>
+	<body>
+		<div class="background">
+			<img class="cat cat1" src="./img/cat.png">
+			<img class="cat cat2" src="./img/cat.png"> 
+			<img class="cat cat3" src="./img/cat.png">
+			<img class="cat cat4" src="./img/cat.png">
+			<img class="cat cat5" src="./img/cat.png">
+			<img class="cat cat6" src="./img/cat.png">
+			<img class="cat cat7" src="./img/cat.png">
+			<img class="cat cat8" src="./img/cat.png">
+			<img class="cat cat9" src="./img/cat.png">
+		</div>
+		<h1>Ceiling Cat is annoying and intrusive.  Make him go away!</h1>
+		<h2>Ceiling Cat has been scared away <span id="score">0</span> times!</h2>
+		<h2 id="scoreMessage"></h2>
+		<img src="img/doodle.jpg" width="870">
+	</body>
+</html>
+
+<!--  -->
+
+
+

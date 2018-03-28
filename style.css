@@ -1,0 +1,119 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.background {
+	background-image: url("./img/ceiling.png");
+	height: 480px;
+	width: 870px;
+	cursor: url('./img/spray.png'), move;
+}
+
+h1, h2 {
+	width: 870px;
+	text-align: center;
+	padding-top: 10px;
+	font-family: sans-serif;
+	font-weight: 100;
+}
+
+#score {
+	font-size: 60px;
+}
+
+#score, #scoreMessage {
+	color: red;
+}
+#scoreMessage {
+	font-size: 60px;
+	font-weight:bold;
+}
+
+.cat {
+	height: 150px;
+}
+
+.cat1 {
+	position: absolute;
+	left: 106px;
+	top: 12px;
+}
+
+.cat2 {
+	position: absolute;
+	left: 378px;
+	top: 12px;
+}
+
+.cat3 {
+	position: absolute;
+	left: 648px;
+	top: 12px;
+}
+
+.cat4 {
+	position: absolute;
+	left: 106px;
+	top: 166px;
+}
+
+.cat5 {
+	position: absolute;
+	left: 378px;
+	top: 166px;
+}
+
+.cat6 {
+	position: absolute;
+	left: 648px;
+	top: 166px;
+}
+
+.cat7 {
+	position: absolute;
+	left: 106px;
+	top: 321px;
+}
+
+.cat8 {
+	position: absolute;
+	left: 378px;
+	top: 321px;
+}
+
+.cat9 {
+	position: absolute;
+	left: 648px;
+	top: 321px;
+}
+
+
+
+
+/*.row1 {
+	padding: 22px 100px 0px 180px;
+
+}
+
+.row1 .cat2, .row1 .cat3 {
+	padding-left: 190px;
+}
+
+.row2 {
+	padding: 0px 100px 0px 180px;
+
+}
+
+.row2 .cat5, .row2 .cat6 {
+	padding-left: 190px;
+}
+
+.row3 {
+	padding: 4px 100px 100px 180px;
+
+}
+
+.row3 .cat8, .row3 .cat9 {
+	padding-left: 190px;
+}*/
